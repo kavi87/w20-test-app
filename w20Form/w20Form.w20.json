@@ -1,0 +1,27 @@
+{
+    "id": "w20Form",
+    "name": "W20 w20Form fragment",
+
+    "modules": {
+        "formlyModule": {
+            "path": "{w20Form}/modules/formlyModule",
+            "autoload": true
+        },
+        "style": {
+            "path": "[css]!{w20Form}/style/style.css",
+            "autoload": true
+        }
+    },
+
+    "i18n": {
+        "en": ["{w20Form}/i18n/messages-en.json"],
+        "fr": ["{w20Form}/i18n/messages-fr.json"]
+    },
+
+    "routes": {
+        "formlyModule": {
+            "templateUrl":"{w20Form}/views/formly.html",
+            "controller":"FormlyController"
+        }
+    }
+}
