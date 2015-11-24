@@ -4,7 +4,7 @@
             <h1 class="page-header"> Forms </h1>
 
             <div class="col-md-6">
-                <form ng-submit="vm.onSubmit()">
+                <form ng-submit="userForm.submit()">
                     <div data-formly-form model="userForm.model" fields="userForm.fields">
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
@@ -12,15 +12,11 @@
             </div>
 
             <div class="col-md-12">
-                <br/>
-                 <pre>
-                    {{ user }}
-                </pre>
+                <br>
+                <pre>{{ userForm.result | json }}</pre>
             </div>
 
         </div>
     </div>
-
-
 </div>
 
