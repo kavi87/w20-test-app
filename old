@@ -1,0 +1,22 @@
+    "bower_components/w20-business-theme/w20-business-theme.w20.json": {
+        "modules": {
+            "main": {
+                "sidebar": {
+                    "width": 270
+                },
+                "logoUrl": "",
+                "links": [
+                    {
+                        "label": "",
+                        "i18n": "custom.link.key",
+                        "href": "https://www.google.com",
+                        "target": "_blank",
+                        "security": ""
+                    }
+                ],
+                "hideConnectivity": true,
+                "hideCulture": false,
+                "hideSecurity": true
+            }
+        }
+    }

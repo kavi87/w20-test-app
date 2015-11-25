@@ -92,14 +92,23 @@ define([
                     template: '<h1> Register </h1>'
                 },
                 {
+                    key: 'id',
+                    type: 'text',
+                    templateOptions: {
+                        label: 'Id',
+                        placeholder: 'Id',
+                        required: true
+                    }
+                },
+                {
                     key: 'credentials',
                     fieldGroup: [
                         {
                             key: 'login',
                             type: 'text',
                             templateOptions: {
-                                label: 'Username',
-                                placeholder: 'login',
+                                label: 'application.form1.label.name',
+                                placeholder: 'custom.link.key',
                                 required: true
                             }
                         },
@@ -156,7 +165,6 @@ define([
                                 label: 'Married (y/n)',
                                 required: false
                             }
-
                         },
                         {
                             key: 'children',
@@ -164,7 +172,11 @@ define([
                             templateOptions: {
                                 label: 'Number of children',
                                 required: false
+                            },
+                            expressionProperties: {
+                                'templateOptions.disabled': '!model.married'
                             }
+
 
                         },
                         {
@@ -192,7 +204,14 @@ define([
                     templateOptions: {
                         label: 'Few words about you',
                         required: false,
-                        rows: 5
+                        rows: 10
+                    }
+                },
+                {
+                    key: 'animal',
+                    type: 'text',
+                    templateOptions: {
+                        label: 'Animal'
                     }
                 }
             ]

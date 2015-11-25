@@ -2,5 +2,7 @@
     "application.view.w20Form.content": "Exemple de contenu",
     "application.view.w20Form.welcome": "Bienvenue",
 
-    "custom.link.key": "Lien utilisateur"
+    "custom.link.key": "Lien utilisateur",
+
+    "application.form1.label.name": "Nom d'utilisateur"
 }

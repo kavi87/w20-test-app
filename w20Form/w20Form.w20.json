@@ -13,6 +13,15 @@
         }
     },
 
+    "security": {
+        "provider": "BasicAuthentication",
+        "config": {
+            "authentication": "{w20Form}/data/authentication.json",
+            "authorizations": "{w20Form}/data/authorization.json"
+        }
+    },
+
+
     "i18n": {
         "en": ["{w20Form}/i18n/messages-en.json"],
         "fr": ["{w20Form}/i18n/messages-fr.json"]

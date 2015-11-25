@@ -32,8 +32,8 @@
             },
             "security": {
                 "autoLogin": true,
-                "redirectAfterLogout": "/",
-                "redirectAfterLogin": "/",
+                "redirectAfterLogout": "w20Form/formlyModule",
+                "redirectAfterLogin": "w20Form/formlyModule",
                 "persistentRestrictions": false
             },
             "utils": {}
