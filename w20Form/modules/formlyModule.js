@@ -7,130 +7,202 @@ define([
 
     var module = angular.module('formlyModule', ['ngResource']);
 
-    module.controller('FormlyController', ['$scope', function ($scope) {
-
-        var form = {
-            layout: [1, 1, 2],
-            fields: [
-                { h1: "Title" },
-                { template: '<hr />' },
-                {
-                    key: 'username',
-                    type: 'input',
-                    templateOptions: {
-                        label: 'Username',
-                        placeholder: 'johndoe',
-                        required: true,
-                        maxlength: 10,
-                        minlength: 6
-                    }
-                },
-                {
-                    key: 'password',
-                    type: 'input',
-                    templateOptions: {
-                        type: 'password',
-                        label: 'Password',
-                        required: true
+    module.factory('provinceFactory', function () {
+        // returns provinceFactory
+        return {
+            list: function () {
+                return [
+                    {
+                        name: 'Alberta',
+                        value: 'alberta',
+                        group: 'A-B'
                     },
-                    expressionProperties: {
-                        'templateOptions.disabled': '!model.username' // disabled when username is blank
+                    {
+                        name: 'British Columbia',
+                        value: 'british_columbia',
+                        group: 'A-B'
+                    },
+                    {
+                        name: 'Manitoba',
+                        value: 'manitoba',
+                        group: 'M-N'
+                    },
+                    {
+                        name: 'New Brunswick',
+                        value: 'new_brunswick',
+                        group: 'M-N',
+                        selected: true
+                    },
+                    {
+                        name: 'Newfoundland and Labrador',
+                        value: 'newfoundland_and_labrador',
+                        group: 'M-N'
+                    },
+                    {
+                        name: 'Northwest Territories',
+                        value: 'northwest_territories',
+                        group: 'M-N'
+                    },
+                    {
+                        name: 'Nova Scotia',
+                        value: 'nova_scotia',
+                        group: 'M-N'
+                    },
+                    {
+                        name: 'Nunavut',
+                        value: 'nunavut',
+                        group: 'M-N'
+                    },
+                    {
+                        name: 'Ontario',
+                        value: 'ontario',
+                        group: 'O-Y'
+                    },
+                    {
+                        name: 'Prince Edward Island',
+                        value: 'prince_edward_island',
+                        group: 'O-Y'
+                    },
+                    {
+                        name: 'Quebec',
+                        value: 'quebec',
+                        group: 'O-Y'
+                    },
+                    {
+                        name: 'Saskatchewan',
+                        value: 'saskatchewan',
+                        group: 'O-Y'
+                    },
+                    {
+                        name: 'Yukon',
+                        value: 'Yukon',
+                        group: 'O-Y'
                     }
-                }
-            ]
-        };
+                ]
+            }
+        }
+    });
+
+    module.controller('FormlyController', ['$scope', 'provinceFactory', function ($scope, provinceFactory) {
 
         $scope.userForm = {
             model: {},
             fields: [
                 {
-                    key: 'description',
+                    template: '<h1> Register </h1>'
+                },
+                {
+                    key: 'credentials',
+                    fieldGroup: [
+                        {
+                            key: 'login',
+                            type: 'text',
+                            templateOptions: {
+                                label: 'Username',
+                                placeholder: 'login',
+                                required: true
+                            }
+                        },
+                        {
+                            key: 'password',
+                            type: 'password',
+                            templateOptions: {
+                                label: 'Password',
+                                placeholder: 'password',
+                                required: true
+                            },
+                            expressionProperties: {
+                                'templateOptions.disabled': '!model.login' // disabled when username is blank
+                            }
+                        }
+                    ]
+                },
+                {
+                    key: 'informations',
+                    fieldGroup: [
+                        {
+                            key: 'birthday',
+                            type: 'date',
+                            templateOptions: {
+                                label: 'Birthday',
+                                required: false
+                            }
+
+                        },
+                        {
+                            key: 'sex',
+                            type: 'radio',
+                            templateOptions: {
+                                name: 'radioGroup',
+                                label: 'Male',
+                                value: 'M',
+                                required: false
+                            }
+                        },
+                        {
+                            key: 'sex',
+                            type: 'radio',
+                            templateOptions: {
+                                name: 'radioGroup',
+                                label: 'Female',
+                                value: 'F',
+                                required: false
+                            }
+                        },
+                        {
+                            key: 'married',
+                            type: 'checkbox',
+                            templateOptions: {
+                                label: 'Married (y/n)',
+                                required: false
+                            }
+
+                        },
+                        {
+                            key: 'children',
+                            type: 'number',
+                            templateOptions: {
+                                label: 'Number of children',
+                                required: false
+                            }
+
+                        },
+                        {
+                            key: 'province-single',
+                            type: 'select',
+                            templateOptions: {
+                                label: 'Select one province',
+                                options: provinceFactory.list()
+                            }
+                        },
+                        {
+                            key: 'province-multiple',
+                            type: 'select',
+                            templateOptions: {
+                                label: 'Select many provinces',
+                                options: provinceFactory.list(),
+                                multiple: true
+                            }
+                        }
+                    ]
+                },
+                {
+                    key: 'about',
                     type: 'textarea',
                     templateOptions: {
-                        label: 'Description',
-                        placeholder: 'johndoe',
-                        required: true,
-                        maxlength: 10,
-                        minlength: 6,
+                        label: 'Few words about you',
+                        required: false,
                         rows: 5
                     }
-                },
-                {
-                    key: 'username',
-                    type: 'text',
-                    templateOptions: {
-                        label: 'Username',
-                        placeholder: 'johndoe',
-                        required: true,
-                        maxlength: 10,
-                        minlength: 6
-                    }
-                },
-                {
-                    key: 'password',
-                    type: 'password',
-                    templateOptions: {
-                        label: 'Password',
-                        required: true
-                    },
-                    expressionProperties: {
-                        'templateOptions.disabled': '!model.username' // disabled when username is blank
-                    }
-                },
-                {
-                    template: '<h1> Title </h1>'
-                },
-                {
-                    key: 'date',
-                    type: 'date',
-                    templateOptions: {
-                        label: 'Date',
-                        required: true
-                    }
-
-                },
-                {
-                    key: 'check',
-                    type: 'checkbox',
-                    templateOptions: {
-                        label: 'Check'
-                    }
-
-                },
-                {
-                    key: 'radio',
-                    type: 'radio',
-                    templateOptions: {
-                        name: 'radioGroup',
-                        label: 'One',
-                        value: 'one'
-                    }
-
-                },
-                {
-                    key: 'radio',
-                    type: 'radio',
-                    templateOptions: {
-                        name: 'radioGroup',
-                        label: 'Two',
-                        value: 'two'
-                    }
-
                 }
             ]
         };
 
+        $scope.userForm.submit = function () {
+            $scope.userForm.result = $scope.userForm.model;
+        };
+    }]);
 
-        $scope.userForm.onSubmit = onSubmit;
-
-
-        function onSubmit() {
-            console.log('form submitted:', userForm.model);
-        }
-
-    }
-    ])
-    ;
 
     return {
         angularModules: ['formlyModule']
