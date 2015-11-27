@@ -5,7 +5,7 @@
         "modules": {
             "select": {},
             "grid": {},
-            "forms":{}
+            "forms": {}
         }
     },
 
@@ -42,26 +42,10 @@
 
     "bower_components/w20-bootstrap-3/w20-bootstrap-3.w20.json": {},
 
-
-    "bower_components/w20-business-theme/w20-business-theme.w20.json": {
+    "bower_components/w20-psa-manufacturing-theme/src/main/js/w20-psa-manufacturing-theme.w20.json": {
         "modules": {
-            "main": {
-                "sidebar": {
-                    "width": 270
-                },
-                "logoUrl": "",
-                "links": [
-                    {
-                        "label": "",
-                        "i18n": "custom.link.key",
-                        "href": "https://www.google.com",
-                        "target": "_blank",
-                        "security": ""
-                    }
-                ],
-                "hideConnectivity": true,
-                "hideCulture": false,
-                "hideSecurity": true
+            "menu": {
+                "logoUrl": ""
             }
         }
     }

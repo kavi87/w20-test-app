@@ -83,7 +83,13 @@ define([
         }
     });
 
-    module.controller('FormlyController', ['$scope', 'provinceFactory', function ($scope, provinceFactory) {
+    module.controller('FormlyController', ['$scope', 'provinceFactory', 'FormsService', function ($scope, provinceFactory, formsService) {
+
+        //formsService.validation.addStringMessage('required', 'Not good!');
+
+        formsService.validation.messages.required = function ($viewValue, $modelValue, scope) {
+            return scope.options.templateOptions.label + ' is required';
+        };
 
         $scope.userForm = {
             model: {},
@@ -220,6 +226,7 @@ define([
         $scope.userForm.submit = function () {
             $scope.userForm.result = $scope.userForm.model;
         };
+
     }]);
 
 

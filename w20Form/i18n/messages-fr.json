@@ -3,6 +3,7 @@
     "application.view.w20Form.welcome": "Bienvenue",
 
     "custom.link.key": "Lien utilisateur",
+    "application.view.w20Form.formlyModule": "Formulaires",
 
     "application.form1.label.name": "Nom d'utilisateur"
 }
