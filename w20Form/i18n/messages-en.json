@@ -5,5 +5,7 @@
     "custom.link.key": "Custom link key",
     "application.view.w20Form.formlyModule": "Forms",
 
-    "application.form1.label.name": "Username"
+    "application.form1.label.name": "Username",
+
+    "application.form.validation.required": "(user) Field is required"
 }

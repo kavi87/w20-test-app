@@ -8,7 +8,6 @@ define([
     var module = angular.module('formlyModule', ['ngResource']);
 
     module.factory('provinceFactory', function () {
-        // returns provinceFactory
         return {
             list: function () {
                 return [
@@ -85,15 +84,24 @@ define([
 
     module.controller('FormlyController', ['$scope', 'provinceFactory', 'FormsService', function ($scope, provinceFactory, formsService) {
 
-        //formsService.validation.addStringMessage('required', 'Not good!');
+        //formsService.validation.addStringMessage('required', 'application.form.validation.required');
+        //formsService.validation.addTemplateOptionValueMessage('minlength', 'minlength', 'Minimum length is  ', '', 'Too short');
 
-        formsService.validation.messages.required = function ($viewValue, $modelValue, scope) {
+        formsService.config.setType({
+            name: 'title',
+            template: '<h1> Form title </h1>'
+        });
+
+       /* formsService.validation.messages.required = function ($viewValue, $modelValue, scope) {
             return scope.options.templateOptions.label + ' is required';
-        };
+        };*/
 
         $scope.userForm = {
             model: {},
             fields: [
+                {
+                    type: 'title'
+                },
                 {
                     template: '<h1> Register </h1>'
                 },
@@ -103,6 +111,56 @@ define([
                     templateOptions: {
                         label: 'Id',
                         placeholder: 'Id',
+                        required: true,
+                        minlength: 6
+                    }
+                },
+                {
+                    key: 'hat',
+                    type: 'select',
+                    templateOptions: {
+                        label: 'Hat',
+                        placeholder: 'Hat',
+                        required: true,
+                        options: [
+                            {
+                                name: 'Small hat',
+                                value: 'smhat',
+                                group: 'Small'
+                            },
+                            {
+                                name: 'Big hat',
+                                value: 'bghat',
+                                group: 'Big'
+                            }
+                        ]
+
+                    }
+                },
+                {
+                    key: 'email',
+                    type: 'email',
+                    templateOptions: {
+                        label: 'Email',
+                        placeholder: 'Email',
+                        required: true
+                    }
+                },
+                {
+                    key: 'number',
+                    type: 'number',
+                    templateOptions: {
+                        label: 'Number',
+                        placeholder: 'Number',
+                        required: true
+                    }
+                },
+                {
+                    key: 'url',
+                    type: 'url',
+                    templateOptions: {
+                        label: 'URL',
+                        placeholder: 'URL',
                         required: true
                     }
                 },
@@ -112,6 +170,7 @@ define([
                         {
                             key: 'login',
                             type: 'text',
+                            className: 'col-md-6',
                             templateOptions: {
                                 label: 'application.form1.label.name',
                                 placeholder: 'custom.link.key',
@@ -121,6 +180,7 @@ define([
                         {
                             key: 'password',
                             type: 'password',
+                            className: 'col-md-6',
                             templateOptions: {
                                 label: 'Password',
                                 placeholder: 'password',
@@ -147,6 +207,7 @@ define([
                         {
                             key: 'sex',
                             type: 'radio',
+                            className: 'col-md-6',
                             templateOptions: {
                                 name: 'radioGroup',
                                 label: 'Male',
@@ -157,6 +218,7 @@ define([
                         {
                             key: 'sex',
                             type: 'radio',
+                            className: 'col-md-6',
                             templateOptions: {
                                 name: 'radioGroup',
                                 label: 'Female',
@@ -224,7 +286,7 @@ define([
         };
 
         $scope.userForm.submit = function () {
-            $scope.userForm.result = $scope.userForm.model;
+            alert('submit: ' + JSON.stringify($scope.userForm.model));
         };
 
     }]);

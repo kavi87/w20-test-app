@@ -5,5 +5,7 @@
     "custom.link.key": "Lien utilisateur",
     "application.view.w20Form.formlyModule": "Formulaires",
 
-    "application.form1.label.name": "Nom d'utilisateur"
+    "application.form1.label.name": "Nom d'utilisateur",
+
+    "application.form.validation.required": "(utilisateur) Champs requis"
 }
